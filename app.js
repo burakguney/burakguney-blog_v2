@@ -3,8 +3,8 @@ const express = require("express")
 const exphbs = require("express-handlebars")
 const _handlebars = require('handlebars')
 const app = express()
-const port = 3000
-const hostname = "127.0.0.1"
+const port = process.env.PORT || 3000
+//const hostname = "127.0.0.1"
 const mongoose = require("mongoose")
 const bodyParser = require('body-parser')
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
@@ -48,7 +48,7 @@ app.use("/posts", posts)
 
 
 /* PORT LISTEN */
-app.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`)
+app.listen(port, () => {
+    console.log(`Server running`)
 })
 /* PORT LISTEN END */
