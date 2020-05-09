@@ -4,17 +4,19 @@ const exphbs = require("express-handlebars")
 const _handlebars = require('handlebars')
 const app = express()
 const port = process.env.PORT || 3000
-//const hostname = "127.0.0.1"
 const mongoose = require("mongoose")
 const bodyParser = require('body-parser')
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 /* MODULE EXPORTS END */
 
-
 /* MONGOOSE MONGODB BAĞLANTISI */
-mongoose.connect('mongodb://127.0.0.1/blogjs_db', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose.connect(process.env.MONGO_URL,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
+).then(() => {
+    console.log("Mongodb Connected");
 })
 /*  MONGOOSE MONGODB END */
 
@@ -49,6 +51,6 @@ app.use("/posts", posts)
 
 /* PORT LISTEN */
 app.listen(port, () => {
-    console.log(`Server running`)
+    console.log(`Server running at http://localhost:${port}/`)
 })
 /* PORT LISTEN END */

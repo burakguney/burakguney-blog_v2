@@ -14,7 +14,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/test', (req, res) => {
     Post.create(req.body)
-    res.redirect("/")
+    res.redirect("/blog")
 })
 
 module.exports = router
