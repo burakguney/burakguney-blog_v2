@@ -10,7 +10,7 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 /* MODULE EXPORTS END */
 
 /* MONGOOSE MONGODB BAĞLANTISI */
-mongoose.connect(process.env.MONGO_URL,
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/nodeBlog',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
