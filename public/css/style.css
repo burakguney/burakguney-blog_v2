@@ -404,11 +404,19 @@ ABOUT US SECTION
 
 #aboutus .project-text {
   padding: 3rem;
-  font-size: 90%;
+  font-size: 1.1rem;
+}
+
+p {
+  text-indent: 50px;
+}
+
+p i {
+  text-indent: 1px;
 }
 
 .bg-main {
-  background-color: #fd8a10;
+  background-color: #f2f2f2;
 }
 
 .team-member {

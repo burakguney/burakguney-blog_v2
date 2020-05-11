@@ -18,10 +18,10 @@
                     <a class="nav-link" href="/about">HAKKIMDA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog">BLOG</a>
+                    <a class="nav-link alertbox" id="blog" href="/blog">BLOG</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/posts/new">POST EKLE</a>
+                    <a class="nav-link" id="blogpost" href="/posts/new">POST EKLE</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">İLETİŞİM</a>
@@ -36,3 +36,19 @@
         </div>
     </div>
 </nav>
+
+<script>
+    let blog = document.getElementById("blog");
+    let blogpost = document.getElementById("blogpost");
+
+    blog.addEventListener("click", () => {
+        setTimeout(function () { location.replace("https://burakguney.herokuapp.com/"); }, 1000);
+        alert("Burası şuanlık kullanım dışı üzgünüm.")
+    })
+
+    blogpost.addEventListener("click", () => {
+        setTimeout(function () { location.replace("https://burakguney.herokuapp.com/"); }, 1000);
+        alert("Yani istersen post ekle ama bunu ben veritabanında görebilirim sen göremezsin arayüzle ilişkilendirmedim daha. Bu sebeple girmene de gerek yok.");
+    })
+
+</script>
