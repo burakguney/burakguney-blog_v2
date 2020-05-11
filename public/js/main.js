@@ -1,4 +1,4 @@
-$(window).scroll(function() {
+$(window).scroll(function () {
     if ($(document).scrollTop() > 50) {
         $('nav').addClass('shrink');
     }
@@ -7,11 +7,11 @@ $(window).scroll(function() {
     }
 });
 
-$(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-  items: 1,
-  loop: true,
-  autoplay:true,
-  smartSpeed: 300
-  });
+$(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        smartSpeed: 300
+    });
 });
