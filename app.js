@@ -35,9 +35,9 @@ app.use(expressSession({
     resave: false,
     saveUninitialized: true,
     store: new mongoStore({ mongooseConnection: mongoose.connection })
-}))
+})) */
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
     const { userId, username } = req.session
     if (userId, username) {
         res.locals = {
@@ -86,8 +86,8 @@ app.use(bodyParser.json())
 const main = require('./routes/main')
 app.use("/", main)
 
-const users = require('./routes/users');
-app.use("/users", users)
+/* const users = require('./routes/users');
+app.use("/users", users) */
 
 /* const admin = require('./routes/admin/home');
 app.use("/admin", admin)
