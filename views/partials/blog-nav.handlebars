@@ -24,7 +24,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="blogcontact" href="/contact"><i class="fas fa-envelope"></i>İLETİŞİM</a>
                 </li>
-                {{#unless displayLink}}
+                {{!-- {{#unless displayLink}}
                 <li class="nav-item">
                     <a class="nav-link" id="bloglogin" href="/users/login"><i class="fas fa-sign-in-alt"></i>GİRİŞ
                         YAP</a>
@@ -42,7 +42,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/admin">ADMIN</a>
                 </li>
-                {{/if}}
+                {{/if}} --}}
 
             </ul>
         </div>
@@ -52,8 +52,13 @@
 <script>
     let navbutton = document.getElementById("navbutton");
     let nav = document.getElementById("mainNav");
-
+    let blog = document.getElementById("blog");
     navbutton.addEventListener("click", () => {
         nav.classList.add("shrink");
+    })
+
+    blog.addEventListener("click", () => {
+        setTimeout(function () { location.replace("https://burakguney.herokuapp.com"); }, 1000);
+        alert("Burası şuanlık kullanım dışı üzgünüm.")
     })
 </script>
