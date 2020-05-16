@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 
@@ -58,4 +58,4 @@ router.get('/logout', (req, res) => {
 
 })
 
-module.exports = router
+module.exports = router */

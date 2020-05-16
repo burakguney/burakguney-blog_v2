@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const router = express.Router();
 const Post = require('../../models/Post');
 const path = require("path");
@@ -31,4 +31,4 @@ router.post('/editpost', (req, res) => {
         })
 })
 
-module.exports = router
+module.exports = router */

@@ -13,7 +13,7 @@ router.get('/about', (req, res) => {
     res.render("blogsite/about")
 })
 
-router.get('/blog', (req, res) => {
+/* router.get('/blog', (req, res) => {
     Post.find({}).then((posts) => {
         Category.find({}).then((categories) => {
             res.render("blogsite/blog", {
@@ -37,7 +37,7 @@ router.get('/blog/:id', (req, res) => {
             })
         })
     })
-})
+}) */
 
 router.get('/contact', (req, res) => {
     res.render("blogsite/contact")
