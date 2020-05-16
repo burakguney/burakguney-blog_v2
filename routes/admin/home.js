@@ -1,6 +1,5 @@
-const express = require('express');
+/* const express = require('express');
 const router = express.Router();
-const Category = require("../../models/Category")
 
 router.get('/', (req, res) => {
     if (req.session.userId) {
@@ -10,4 +9,4 @@ router.get('/', (req, res) => {
     }
 })
 
-module.exports = router
+module.exports = router */

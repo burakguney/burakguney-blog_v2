@@ -3,8 +3,8 @@ const expressSession = require('express-session');
 const fileUpload = require('express-fileupload');
 const app = express()
 
-const mongoose = require("mongoose")
-const connectMongo = require('connect-mongo');
+/* const mongoose = require("mongoose")
+const connectMongo = require('connect-mongo'); */
 
 const port = process.env.PORT || 3000
 
@@ -14,11 +14,11 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 
 const bodyParser = require('body-parser')
 
-const helperGenerateDate = require('./helpers/generateDate').generateDate;
+/* const helperGenerateDate = require('./helpers/generateDate').generateDate; */
 
 
 /* MONGOOSE MONGODB BAĞLANTISI */
-mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/nodeBlog',
+/* mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/nodeBlog',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -26,10 +26,10 @@ mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/nodeBlog',
     }
 ).then(() => {
     console.log("Mongodb Connected");
-})
+}) */
 /* END */
 
-const mongoStore = connectMongo(expressSession)
+/* const mongoStore = connectMongo(expressSession)
 app.use(expressSession({
     secret: "kadripasa",
     resave: false,
@@ -49,15 +49,15 @@ app.use((req, res, next) => {
         }
     }
     next()
-})
+}) */
 
 
 //sessionMessage middleware
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
     res.locals.sessionMessage = req.session.sessionMessage
     delete req.session.sessionMessage
     next()
-})
+}) */
 
 app.use(fileUpload());
 app.use(express.static("public"));
@@ -66,9 +66,9 @@ app.use(express.static("public"));
 /* TEMPLATE ENGINE */
 app.engine("handlebars", expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(handlebars),
-    helpers: {
+    /* helpers: {
         generateDate: helperGenerateDate
-    }
+    } */
 }));
 app.set("view engine", "handlebars");
 /* END */
@@ -89,12 +89,12 @@ app.use("/", main)
 const users = require('./routes/users');
 app.use("/users", users)
 
-const admin = require('./routes/admin/home');
+/* const admin = require('./routes/admin/home');
 app.use("/admin", admin)
 const adminCategory = require('./routes/admin/category');
 app.use("/admin", adminCategory)
 const adminPost = require('./routes/admin/post');
-app.use("/admin", adminPost)
+app.use("/admin", adminPost) */
 /* END */
 
 

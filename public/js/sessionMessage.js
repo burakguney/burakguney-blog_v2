@@ -1,4 +1,4 @@
-let sessionMessage = document.getElementById("sessionMessage");
+/* let sessionMessage = document.getElementById("sessionMessage");
 
 if (sessionMessage === null) {
     console.log("Session message null ama dert değil.");
@@ -9,5 +9,5 @@ if (sessionMessage === null) {
         }
         e.preventDefault();
     })
-}
+} */
 
