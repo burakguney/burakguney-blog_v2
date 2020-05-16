@@ -1,0 +1,20 @@
+/* ============================
+ABOUT ME SECTION
+============================== */
+
+#aboutMe {
+  background-color: #f2f2f2;
+}
+
+#aboutMe .project-text {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+#aboutMe p {
+  text-indent: 2rem;
+}
+
+#aboutMe p i {
+  text-indent: 1px;
+}

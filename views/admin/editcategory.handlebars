@@ -1,0 +1,75 @@
+<!--==========================
+    Header Section
+============================-->
+<section class="admin-color md-padding">
+</section>
+
+<!--==========================
+    Admin Editcategory Section
+============================-->
+
+<div class="d-flex admin-padding" id="wrapper">
+
+    {{!-- Admin Nav Side Bar --}}
+    {{> admin-nav}}
+
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-secondary" id="menu-toggle">Admin Menü</button>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="col-md-4 offset-md-4">
+                    <div class="section-header">
+                        <h2 class="title">KATEGORİ</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <form action="/admin/editcategory" method="POST">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="categoryname" type="text"
+                                        placeholder="* Kategori Adı" required="required"
+                                        data-validation-required-message="Please enter category name">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-8 offset-md-2 mt-1">
+                                <button type="submit" class="btn btn-success btn-block">Kategori Ekle</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-9">
+                    {{#if sessionMessage.message}}
+                    <div class="{{sessionMessage.type}}" id="sessionMessage">
+                        {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                    {{/if}}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>KATEGORİ</th>
+                                <th>Düzenle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each category}}
+                            <tr>
+                                <td>{{categoryname}}</td>
+                                <td>sil</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

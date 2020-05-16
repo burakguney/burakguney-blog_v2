@@ -1,0 +1,65 @@
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+
+.navbar-brand {
+  transition: all 0.5s;
+}
+
+.navbar-brand:hover {
+  color: #fd8a10 !important;
+}
+
+#mainNav {
+  background-color: transparent;
+}
+
+nav.navbar-container {
+  padding: 20px 0 20px 0;
+}
+
+.navbar-container.shrink {
+  padding: 0;
+}
+
+#mainNav .navbar-toggler,
+#adminNav .navbar-toggler {
+  font-size: 12px;
+  right: 0;
+  padding: 14px;
+  text-transform: uppercase;
+  color: white;
+  border: 0;
+  border-radius: 4px 4px 4px 4px;
+  background-color: #fd8a10;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link,
+#adminNav .navbar-nav .nav-item .nav-link {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 10px;
+  letter-spacing: 1px;
+  color: white;
+  transition: all 0.5s;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link.active,
+#adminNav .navbar-nav .nav-item .nav-link.active,
+#mainNav .navbar-nav .nav-item .nav-link:hover,
+#adminNav .navbar-nav .nav-item .nav-link:hover {
+  color: #fd8a10;
+}
+
+nav.shrink {
+  background-color: #2a2a2a !important;
+}
+
+.navbar-brand.shrink,
+.navbar-container.shrink,
+.navbar.fixed-top.shrink,
+.navbar-brand,
+.navbar-container {
+  transition: 0.8s;
+  -webkit-transition: 0.8s;
+}

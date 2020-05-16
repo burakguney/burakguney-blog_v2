@@ -1,0 +1,61 @@
+/*--------------------------------------------------------------
+# Home Section
+--------------------------------------------------------------*/
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  color: white;
+  width: 100%;
+  z-index: 1;
+}
+
+.main-btn {
+  display: inline-block;
+  padding: 5px 25px;
+  border: 2px solid transparent;
+  transition: 0.2s opacity;
+  -webkit-transition: 0.2s opacity;
+}
+
+.main-btn {
+  background-color: #fd8a10;
+  color: #fff;
+}
+
+.main-btn:hover {
+  opacity: 0.8;
+}
+
+/*--------------------------------------------------------------
+# Avatar
+--------------------------------------------------------------*/
+
+.master {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.master img {
+  width: 175px;
+  height: 175px;
+  border: 5px solid #fff;
+}
+
+.master h4 {
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-transform: none;
+}
+
+.master p {
+  margin-top: 0;
+}

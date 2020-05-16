@@ -1,140 +1,49 @@
 <!--==========================
-    HERO SECTION Section
+    Hero Header Section
 ============================-->
-<header id="hero">
-    <div class="container">
+
+<header>
+    <video autoplay muted loop id="myVideo">
+        <source src="/img/pexel.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    {{!-- <div class="container">
         <div class="intro-text">
-            <h1 class="text-white">MAY THE FORCE BE WITH YOU!</h1>
-            <p></p>
-            <a href="/about"><button class="main-btn">Hakkımda!</button></a>
+            <h1 class="text-white mb-3">MAY THE FORCE BE WITH YOU!</h1>
+            <a href="/blog"><button class="main-btn btn">Blog!</button></a>
         </div>
-    </div>
+    </div> --}}
 </header>
 
 <!--==========================
-    About Section
+    Home Section
 ============================-->
+<section class="content">
 
-<section id="about" class="md-padding">
     <div class="container">
-        <div class="row text-center">
+        <div class="row">
             <div class="col-md-4 offset-md-4">
-                <div class="section-header">
-                    <h2 class="title">Sosyal Medya</h2>
+                <div class="master">
+                    <a href="/about"><img class="mx-auto rounded-circle" src="/img/avatar.jpg" alt="">
+                        <h4 class="text-light">Burak Güney</h4>
+                        <p class="text-light">Yazılım Mühendisi</p>
+                    </a>
+
+                    <a href="/about"><button class="main-btn btn"><i class="fas fa-portrait"></i>Hakkımda!</button></a>
                 </div>
             </div>
-        </div>
-        <div class="row text-center">
-
-            <div class="col-md-4">
-                <a href="https://www.linkedin.com/in/guneyburak/" target="_blank">
-                    <div class="about">
-                        <i class="fab fa-linkedin-in"></i>
-                        <h3>Linkedin</h3>
-                    </div>
-                </a>
-            </div>
-
-
-            <div class="col-md-4">
-                <a href="https://github.com/burakguney" target="_blank">
-                    <div class="about">
-                        <i class="fab fa-github"></i>
-                        <h3>Github</h3>
-                    </div>
-                </a>
-            </div>
-
-
-            <div class="col-md-4">
-                <a href="https://twitter.com/guneyski" target="_blank">
-                    <div class="about">
-                        <i class="fab fa-twitter"></i>
-                        <h3>Twitter</h3>
-                    </div>
-                </a>
+            <div class="col-md-12">
+                <ul class="footer-follow">
+                    <li><a href="https://www.linkedin.com/in/guneyburak/" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li><a href="https://github.com/burakguney" target="_blank"><i class="fab fa-github"></i></a></li>
+                    <li><a href="https://twitter.com/guneyski" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li style="color: #868f9b;">Powered by<a href="https://aws.amazon.com/tr/" target="_blank"><i
+                                class="fab fa-aws"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
-
-<section id="statement" class="md-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h4 class="text-black lead">"Gençler cesaretimizi takviye ve idame eden sizlersiniz. Siz, almakta
-                    olduğunuz terbiye ve irfan ile insanlık ve
-                    medeniyetin, vatan sevgisinin, fikir hürriyetinin en kıymetli timsali olacaksınız. Yükselen yeni
-                    nesil, istikbal
-                    sizsiniz. Cumhuriyeti biz kurduk, onu yükseltecek ve yaşatacak sizsiniz."</h4>
-                <h6 class="text-white lead">Mustafa Kemal Atatürk</h6>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-{{!-- <section id="features" class="md-padding">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-4 offset-md-4">
-                <div class="section-header">
-                    <h2 class="title">Özet Gibi Şeyler</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
-                </p>
-                <div class="feature">
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <i class="far fa-edit"></i>
-                        </div>
-                        <div class="col-md-10">
-                            <h5>FEATURE 01</h5>
-                            <h4>LOREM IPSUMAT</h4>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <i class="far fa-edit"></i>
-                        </div>
-                        <div class="col-md-10">
-                            <h5>FEATURE 01</h5>
-                            <h4>LOREM IPSUMAT</h4>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <i class="far fa-edit"></i>
-                        </div>
-                        <div class="col-md-10">
-                            <h5>FEATURE 01</h5>
-                            <h4>LOREM IPSUMAT</h4>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div id="features-slide" class="owl-carousel owl-theme">
-                    <img src="img/BurakGuney1.jpg" class="img-fluid">
-                    <img src="img/BurakGuney3.jpg" class="img-fluid">
-                    <img src="img/BurakGuney4.jpg" class="img-fluid">
-                    <img src="img/BurakGuney2.jpg" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}

@@ -1,0 +1,87 @@
+<!--==========================
+    Header Section
+============================-->
+<section class="admin-color md-padding">
+</section>
+
+<!--==========================
+    Admin Editpost Section
+============================-->
+
+<div class="d-flex admin-padding" id="wrapper">
+
+    {{!-- Admin Nav Side Bar --}}
+    {{> admin-nav}}
+
+
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-lightk border-bottom">
+            <button class="btn btn-secondary" id="menu-toggle">Admin Menü</button>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="col-md-4 offset-md-4">
+                    <div class="section-header">
+                        <h2 class="title">İçerik Ekle</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="/admin/editpost" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="title" type="text" placeholder="Başlık *"
+                                        required="required" data-validation-required-message="Please enter a title.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="froala-editor" name="content"
+                                        placeholder="İçerik *" required="required"
+                                        data-validation-required-message="Please enter a content."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <label class="text-dark ml-3" for=""> <b>Görsel Ekle *</b> </label>
+                                            <input class="form-control btn-sm" name="postImage" id="postImage"
+                                                type="file" required="required" onchange="previewFile()"
+                                                data-validation-required-message="Please enter a title.">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img style="width:100%;" class="img-fluid rounded" id="postImg" />
+                                        </div>
+                                    </div>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">* Zorunlu alanları belirtir.</div>
+                            <div class="col-md-4 offset-md-4 text-center mt-3">
+                                <button type="submit" class="btn btn-success btn-block">İçerik Ekle</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewFile() {
+        var img = document.getElementById('postImg');
+        var file = document.getElementById('postImage').files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            img.src = reader.result;
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            img.src = "";
+        }
+    }
+</script>

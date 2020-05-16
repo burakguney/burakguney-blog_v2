@@ -1,123 +1,116 @@
 <!--==========================
-    INSIDE HERO SECTION Section
+    Header Section
 ============================-->
-<section class="page-image page-image-blog md-padding">
-    <h1 class="text-white text-center">BLOG</h1>
+<section class="page-image page-image-about-blog md-padding">
 </section>
 
 <!--==========================
     Blog Section
 ============================-->
-<section id="blog" class="md-padding">
+<section id="blog" class="md-paddingBlog">
     <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 offset-md-4">
+                <div class="section-header">
+                    <h2 class="title">YAPIM AŞAMASINDA</h2>
+                </div>
+            </div>
+        </div>
         <div class="row">
+            <!-- Blog -->
             <main id="main" class="col-md-8">
+
+                {{#if sessionMessage.message}}
+                <div class="{{sessionMessage.type}}" id="sessionMessage">
+                    {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
+                            class="fa fa-times"></i></a>
+                </div>
+                {{/if}}
+
+
                 <div class="row">
+                    <!-- Posts -->
                     {{#each posts}}
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         <div class="blog">
-                            <div class="blog-img">
-                                <img src="img/blog1.jpg" class="img-fluid">
+                            <div class="blog-img text-center">
+                                <img style="height: 300px;" class="img-fluid rounded" src="{{postImage}}">
                             </div>
                             <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fas fa-users"></i><span class="writer">John Doe</span></li>
-                                    <li><i class="fas fa-clock"></i><span class="writer">{{date}}</span></li>
-                                    <li><i class="fas fa-comments"></i><span class="writer">13</span></li>
+                                <ul class="blog-meta text-center">
+                                    <li><i class="fas fa-users"></i><span class="writer">Burak Güney</span></li>
+                                    <li><i class="fas fa-clock"></i><span
+                                            class="writer">{{generateDate date "LLL"}}</span></li>
+                                    <li><i class="fas fa-comments"></i><span class="writer">0</span></li>
                                 </ul>
-                                <h3>{{title}}</h3>
-                                <p>{{content}}</p>
-                                <a href="/posts/{{_id}}">Read More</a>
+                                <h3 class="text-center">{{title}}</h3>
+                                <p>{{{content}}}</p>
+                                <a href="/blog/{{_id}}">Devamını Oku</a>
                             </div>
                         </div>
                     </div>
                     {{/each}}
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <!-- /Posts -->
+
+                    {{!-- Pagination --}}
+                    <div class="col-md-12 mt-4" aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center" style="background-color: #fd8a10;">
                             <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
+                                <a class="page-link text-dark" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link text-dark" href="#">Next</a>
                             </li>
                         </ul>
-                    </nav>
+                    </div>
+                    {{!-- /Pagination --}}
+
                 </div>
             </main>
-
+            <!-- /Blog -->
             <aside id="aside" class="col-md-4">
-
+                <!-- Search -->
                 <div class="widget">
                     <div class="widget-search">
-                        <input class="search-input form-control" type="text" placeholder="Search">
+                        <input class="search-input form-control" type="text" placeholder="Arama">
                         <button class="search-btn" type="button"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
                 <!-- /Search -->
 
-
                 <!-- Category -->
-                <div class="widget">
-                    <h3 class="mb-3">Categories</h3>
+                <div class="widget mt-5">
+                    <h3 class="mb-3">KATEGORİLER</h3>
                     <div class="widget-category">
-                        <a href="#">Web Design<span>(7)</span></a>
-                        <a href="#">Marketing<span>(142)</span></a>
-                        <a href="#">Web Development<span>(74)</span></a>
-                        <a href="#">Branding<span>(60)</span></a>
-                        <a href="#">Photography<span>(5)</span></a>
+                        {{#each categories}}
+                        <a href="#"> {{categoryname}} <span>(7)</span></a>
+                        {{/each}}
                     </div>
                 </div>
                 <!-- /Category -->
 
                 <!-- Posts sidebar -->
-                <div class="widget">
-                    <h3 class="mb-3">Latest Posts</h3>
-
-                    <!-- single post -->
+                <div class="widget mt-5">
+                    <h3 class="mb-3">SON 3 İÇERİK</h3>
+                    {{#each post3}}
+                    <!-- Single post -->
                     <div class="widget-post">
-                        <a href="#">
-                            <img class="img-fluid" src="./img/post1.jpg" alt="">Lorem Ipsum
+                        <a href="/posts/{{_id}}">
+                            <img style="height: 75px; object-fit: cover;" class=" img-fluid" src="{{postImage}}"
+                                alt="">{{title}}
                         </a>
                         <ul class="blog-meta">
-                            <li>Oct 18, 2017</li>
+                            <li>{{generateDate date "LLL"}}</li>
                         </ul>
                     </div>
-                    <!-- /single post -->
-
-                    <!-- single post -->
-                    <div class="widget-post">
-                        <a href="#">
-                            <img src="./img/post2.jpg" alt="">Lorem Ipsum
-                        </a>
-                        <ul class="blog-meta">
-                            <li>Oct 18, 2017</li>
-                        </ul>
-                    </div>
-                    <!-- /single post -->
-
-
-                    <!-- single post -->
-                    <div class="widget-post">
-                        <a href="#">
-                            <img src="./img/post3.jpg" alt="">Lorem Ipsum
-                        </a>
-                        <ul class="blog-meta">
-                            <li>Oct 18, 2017</li>
-                        </ul>
-                    </div>
-                    <!-- /single post -->
-
+                    <!-- /Single post -->
+                    {{/each}}
                 </div>
                 <!-- /Posts sidebar -->
-
             </aside>
-
-
-
         </div>
-
     </div>
 </section>

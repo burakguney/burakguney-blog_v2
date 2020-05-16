@@ -1,6 +1,7 @@
-<!-- NAVIGATION -->
+<!-- Blog Nav -->
 
-<nav class="navbar navbar-container navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+
+<nav class="navbar navbar-container navbar-expand-lg admin-color fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger ml-2" href="/"> <i class="fas fa-jedi"></i> Burak Güney</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -12,67 +13,55 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">ANASAYFA</a>
+                    <a class="nav-link" href="/"><i class="fas fa-home"></i>ANASAYFA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">HAKKIMDA</a>
+                    <a class="nav-link" href="/about"><i class="fas fa-portrait"></i>HAKKIMDA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link alertbox" id="blog" href="/blog">BLOG</a>
+                    <a class="nav-link alertbox" id="blog" href="/blog"><i class="fas fa-blog"></i>BLOG</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="blogpost" href="/posts/new">POST EKLE</a>
+                    <a class="nav-link" id="blogcontact" href="/contact"><i class="fas fa-envelope"></i>İLETİŞİM</a>
                 </li>
+                {{#unless displayLink}}
                 <li class="nav-item">
-                    <a class="nav-link" id="blogcontact" href="/contact">İLETİŞİM</a>
+                    <a class="nav-link" id="bloglogin" href="/users/login"><i class="fas fa-sign-in-alt"></i>GİRİŞ
+                        YAP</a>
                 </li>
+                {{!-- <li class="nav-item">
+                    <a class="nav-link" id="blogregister" href="/users/register"><i class="fas fa-save"></i>HESAP
+                        OLUŞTUR</a>
+                </li> --}}
+                {{/unless}}
+
+                {{#if displayLink}}
                 <li class="nav-item">
-                    <a class="nav-link" id="blogregister" href="/register">KAYIT OL</a>
+                    <a class="nav-link" id="bloglogin" href="/users/logout"><i class="fas fa-sign-out-alt"></i>Çıkış</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" id="bloglogin" href="/login">GİRİŞ YAP</a>
+                    <a class="nav-link" href="/admin">ADMIN</a>
                 </li>
+                {{/if}}
+
             </ul>
         </div>
     </div>
 </nav>
 
 <script>
-    let blog = document.getElementById("blog");
-    let blogpost = document.getElementById("blogpost");
-    let contact = document.getElementById("blogcontact");
-    let register = document.getElementById("blogregister");
-    let login = document.getElementById("bloglogin");
     let navbutton = document.getElementById("navbutton");
     let nav = document.getElementById("mainNav");
 
-    blog.addEventListener("click", () => {
-        setTimeout(function () { location.replace("https://burakguney.herokuapp.com/about"); }, 1000);
-        alert("Burası şuanlık kullanım dışı üzgünüm.")
-    })
-
-    blogpost.addEventListener("click", () => {
-        setTimeout(function () { location.replace("https://burakguney.herokuapp.com/about"); }, 1000);
-        alert("Yani istersen post ekle ama bunu ben veritabanında görebilirim sen göremezsin arayüzle ilişkilendirmedim daha. Bu sebeple girmene de gerek yok.");
-    })
-
-    contact.addEventListener("click", () => {
-        setTimeout(function () { location.replace("https://burakguney.herokuapp.com/contact"); }, 1000);
-        alert("Benimle şuan iletişim kuramazsın onu bir ara halletçem basit. Görüntülemene izin vericem ama içersi işlevsiz.");
-    })
-
-    register.addEventListener("click", () => {
-        setTimeout(function () { location.replace("https://burakguney.herokuapp.com/register"); }, 1000);
-        alert("Biliyor musun aslında üye almalı mıyım bir fikrim yok karar vericem. Görüntülemene izin vericem ama içersi işlevsiz.");
-    })
-
-    login.addEventListener("click", () => {
-        setTimeout(function () { location.replace("https://burakguney.herokuapp.com/login"); }, 1000);
-        alert("Üye olamayınca girişte yapamıyorsunuz tabi dediğim gibi görüntülemene izin vericem ama içersi işlevsiz.");
-    })
-
     navbutton.addEventListener("click", () => {
         nav.classList.add("shrink");
+    })
+
+    let blog = document.getElementById("blog");
+    blog.addEventListener("click", () => {
+        setTimeout(function () { location.replace("https://burakguney.herokuapp.com"); }, 1000);
+        alert("Burası şuanlık kullanım dışı üzgünüm.")
     })
 
 </script>
