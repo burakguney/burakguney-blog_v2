@@ -1,4 +1,4 @@
-/* const express = require('express');
+const express = require('express');
 const router = express.Router();
 const Category = require("../../models/Category")
 
@@ -29,4 +29,4 @@ router.post('/editcategory', (req, res) => {
     })
 })
 
-module.exports = router */
+module.exports = router
