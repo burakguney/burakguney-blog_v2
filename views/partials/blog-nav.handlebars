@@ -29,10 +29,10 @@
                     <a class="nav-link" id="bloglogin" href="/users/login"><i class="fas fa-sign-in-alt"></i>GİRİŞ
                         YAP</a>
                 </li>
-                {{!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" id="blogregister" href="/users/register"><i class="fas fa-save"></i>HESAP
                         OLUŞTUR</a>
-                </li> --}}
+                </li>
                 {{/unless}}
 
                 {{#if displayLink}}
@@ -57,11 +57,4 @@
     navbutton.addEventListener("click", () => {
         nav.classList.add("shrink");
     })
-
-    let blog = document.getElementById("blog");
-    blog.addEventListener("click", () => {
-        setTimeout(function () { location.replace("https://burakguney.herokuapp.com"); }, 1000);
-        alert("Burası şuanlık kullanım dışı üzgünüm.")
-    })
-
 </script>
