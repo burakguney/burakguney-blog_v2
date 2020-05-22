@@ -35,7 +35,7 @@ router.get('/users', (req, res) => {
 
 router.delete('/users/:id', (req, res) => {
 
-    if (req.params.id == "5ec3d224cb75a81d808dd539") {
+    if (req.params.id == "5ec7e94f22b9e60004525597") {
 
         req.session.sessionMessage = {
             type: "alert alert-danger text-center",
@@ -43,7 +43,7 @@ router.delete('/users/:id', (req, res) => {
         }
         res.redirect("/admin/users")
 
-    } else if (req.session.userId == "5ec3d224cb75a81d808dd539" || req.session.userId == req.params.id) {
+    } else if (req.session.userId == "5ec7e94f22b9e60004525597" || req.session.userId == req.params.id) {
 
         User.deleteOne({ _id: req.params.id }).then(() => {
             req.session.sessionMessage = {
@@ -67,13 +67,13 @@ router.get('/users/edit/:id', (req, res) => {
 
             if (req.session.isAdmin) {
 
-                if (req.params.id == "5ec3d224cb75a81d808dd539" && req.session.userId != "5ec3d224cb75a81d808dd539") {
+                if (req.params.id == "5ec7e94f22b9e60004525597" && req.session.userId != "5ec7e94f22b9e60004525597") {
                     req.session.sessionMessage = {
                         type: "alert alert-danger text-center",
                         message: "Bunu yapmaya yetkiniz yok!"
                     }
                     res.redirect("/admin/users")
-                } else if (req.session.userId == "5ec3d224cb75a81d808dd539" || req.session.userId == req.params.id) {
+                } else if (req.session.userId == "5ec7e94f22b9e60004525597" || req.session.userId == req.params.id) {
                     res.render("admin/edituser", {
                         user: user,
                         title: 'Admin Kullanıcı Düzenle'
