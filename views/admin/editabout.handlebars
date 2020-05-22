@@ -1,0 +1,75 @@
+<!--==========================
+    Header Section
+============================-->
+<section class="admin-color md-padding">
+</section>
+
+<!--==========================
+    Admin Editpost Section
+============================-->
+
+<div class="d-flex admin-padding" id="wrapper">
+
+    {{!-- Admin Nav Side Bar --}}
+    {{> admin-nav}}
+
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-lightk border-bottom">
+            <button class="btn btn-secondary" id="menu-toggle">Admin Menü</button>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="row text-center mt-5">
+                        <div class="col-md-4 offset-md-4">
+                            <div class="section-header">
+                                <h2 class="title">Hakkımda Düzenle</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="/admin/about/{{about.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_method" value="PUT">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="about-editor" name="about"
+                                        placeholder="Hakkımda *" required="required"
+                                        data-validation-required-message="Please enter a content.">{{about.about}}</textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <label class="text-dark ml-3" for=""> <b>Görsel Ekle *</b> </label>
+                                            <input class="btn bg-light text-dark border btn-block p-2" name="aboutImage" id="aboutImage"
+                                                type="file" required="required" onchange="previewAboutImage()"
+                                                data-validation-required-message="Please enter a title.">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img style="width:100%;" class="img-fluid rounded" id="aboutImg" />
+                                        </div>
+                                    </div>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">* Zorunlu alanları belirtir.</div>
+                            <div class="col-md-4 offset-md-4 text-center mt-3">
+                                <button type="submit" class="btn btn-success btn-block">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    CKEDITOR.replace('about');
+</script>

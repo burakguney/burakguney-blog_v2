@@ -1,0 +1,88 @@
+<!--==========================
+    Header Section
+============================-->
+<section class="admin-color md-padding">
+</section>
+
+<!--==========================
+    Admin Editpost Section
+============================-->
+
+<div class="d-flex admin-padding" id="wrapper">
+
+    {{!-- Admin Nav Side Bar --}}
+    {{> admin-nav}}
+
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-lightk border-bottom">
+            <button class="btn btn-secondary" id="menu-toggle">Admin Menü</button>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="row text-center mt-5">
+                        <div class="col-md-4 offset-md-4">
+                            <div class="section-header">
+                                <h2 class="title">Kullanıcılar</h2>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {{#if sessionMessage.message}}
+                    <div class="{{sessionMessage.type}}" id="sessionMessage">
+                        {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                    {{/if}}
+
+
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th>Kullanıcı Adı</th>
+                                <th>E-Posta</th>
+                                <th>Yetki</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+
+                            {{#each users}}
+                            <tr>
+                                <td>{{username}}</td>
+                                <td>{{email}}</td>
+                                <td>Admin: {{isAdmin}}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-block" href="/admin/users/edit/{{id}}">Düzenle</a>
+                                </td>
+                                <td>
+                                    <form action="/admin/users/{{id}}?_method=DELETE" method="POST">
+                                        <input type="hidden" name="_method" value="SİL">
+                                        <button type="submit" class="btn btn-danger btn-block">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    CKEDITOR.replace('content');
+</script>

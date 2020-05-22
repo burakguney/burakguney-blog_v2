@@ -2,13 +2,13 @@
     Header Section
 ============================-->
 <section class="page-image page-image-contact md-padding">
-
 </section>
 
 <!--==========================
     Contact Section
 ============================-->
 <section id="contact" class="md-padding">
+
     <div class="container">
 
         <div class="row text-center">
@@ -20,7 +20,8 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-12">
+
+            <div class="col-md-8 offset-md-2">
                 <form id="contactForm" name="sentMessage" novalidate="novalidate">
                     <div class="row">
                         <div class="col-md-12">
@@ -38,8 +39,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <textarea class="form-control" id="message" placeholder="Mesajınız *"
-                                    required="required"
+                                <textarea class="form-control" id="contact-editor" name="textContact"
+                                    placeholder="Mesajınız *" required="required"
                                     data-validation-required-message="Please enter a message."></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
@@ -55,6 +56,9 @@
                 </form>
             </div>
         </div>
-
     </div>
 </section>
+
+<script>
+    CKEDITOR.replace('textContact');
+</script>

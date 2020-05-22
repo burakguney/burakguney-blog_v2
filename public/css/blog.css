@@ -121,7 +121,7 @@
 
 .widget-category a {
   display: block;
-  font-size: 14px;
+  font-size: 18px;
   color: #354052;
   border-bottom: 1px solid #eee;
   padding: 5px;
@@ -133,7 +133,6 @@
 
 .widget-category a span {
   float: right;
-  color: #fd8a10;
 }
 
 .widget-category a:hover {

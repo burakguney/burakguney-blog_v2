@@ -8,17 +8,23 @@
     Blog Section
 ============================-->
 <section id="blog" class="md-paddingBlog">
+
     <div class="container">
+
         <div class="row text-center">
             <div class="col-md-4 offset-md-4">
                 <div class="section-header">
-                    <h2 class="title">Blog</h2>
+                    <a href="/blog">
+                        <h2 class="title"><i class="fas fa-blog"></i>BLOG</h2>
+                    </a>
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <!-- Blog -->
+
             <main id="main" class="col-md-8">
+
 
                 {{#if sessionMessage.message}}
                 <div class="{{sessionMessage.type}}" id="sessionMessage">
@@ -29,7 +35,8 @@
 
 
                 <div class="row">
-                    <!-- Posts -->
+
+
                     {{#each posts}}
                     <div class="col-md-6 mb-3">
                         <div class="blog">
@@ -38,24 +45,26 @@
                             </div>
                             <div class="blog-content">
                                 <ul class="blog-meta text-center">
-                                    <li><i class="fas fa-users"></i><span class="writer">Burak Güney</span></li>
+                                    <li><i class="fas fa-users"></i><span class="writer">{{author.username}}</span></li>
                                     <li><i class="fas fa-clock"></i><span
                                             class="writer">{{generateDate date "LLL"}}</span></li>
                                     <li><i class="fas fa-comments"></i><span class="writer">0</span></li>
                                 </ul>
                                 <h3 class="text-center">{{title}}</h3>
-                                <p>{{{content}}}</p>
+                                <p>{{{truncate content 200}}}</p>
                                 <a href="/blog/{{_id}}">Devamını Oku</a>
                             </div>
                         </div>
                     </div>
                     {{/each}}
-                    <!-- /Posts -->
 
-                    {{!-- Pagination --}}
+
                     <div class="col-md-12 mt-4" aria-label="Page navigation example">
+
                         <ul class="pagination justify-content-center" style="background-color: #fd8a10;">
-                            <li class="page-item">
+                            {{#paginate current=current pages=pages}}
+                            {{/paginate}}
+                            {{!-- <li class="page-item">
                                 <a class="page-link text-dark" href="#" tabindex="-1">Previous</a>
                             </li>
                             <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
@@ -63,55 +72,14 @@
                             <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
                             <li class="page-item">
                                 <a class="page-link text-dark" href="#">Next</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
-                    {{!-- /Pagination --}}
-
                 </div>
             </main>
-            <!-- /Blog -->
-            <aside id="aside" class="col-md-4">
-                <!-- Search -->
-                <div class="widget">
-                    <div class="widget-search">
-                        <input class="search-input form-control" type="text" placeholder="Arama">
-                        <button class="search-btn" type="button"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-                <!-- /Search -->
 
-                <!-- Category -->
-                <div class="widget mt-5">
-                    <h3 class="mb-3">KATEGORİLER</h3>
-                    <div class="widget-category">
-                        {{#each categories}}
-                        <a href="#"> {{categoryname}} <span>(7)</span></a>
-                        {{/each}}
-                    </div>
-                </div>
-                <!-- /Category -->
 
-                <!-- Posts sidebar -->
-                <div class="widget mt-5">
-                    <h3 class="mb-3">SON 3 İÇERİK</h3>
-                    {{#each post3}}
-                    <!-- Single post -->
-                    <div class="widget-post">
-                        <a href="/posts/{{_id}}">
-                            <img style="height: 75px; object-fit: cover;" class=" img-fluid" src="{{postImage}}"
-                                alt="">{{title}}
-                        </a>
-                        <ul class="blog-meta">
-                            <li>{{generateDate date "LLL"}}</li>
-                        </ul>
-                    </div>
-                    <!-- /Single post -->
-                    {{/each}}
-                </div>
-                <!-- /Posts sidebar -->
-            </aside>
-
+            {{> blog-sidebar}}
 
 
         </div>

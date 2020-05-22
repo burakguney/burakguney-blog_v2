@@ -1,25 +1,37 @@
 <!--==========================
     Header Section
 ============================-->
-<section class="page-image page-image-contact md-padding">
+<section class="page-image page-image-about-blog md-padding">
 </section>
 
 <!--==========================
     Post Section
 ============================-->
 <section id="blog" class="md-paddingBlog">
+
     <div class="container">
+
+        <div class="row text-center">
+            <div class="col-md-4 offset-md-4">
+                <div class="section-header">
+                    <a href="/blog">
+                        <h2 class="title"><i class="fas fa-blog"></i>BLOG</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
+
             <main id="main" class="col-md-8">
-                <a class="btn admin-color text-light" href="/blog"><i class="fas fa-arrow-left"></i>
-                    Blog Sayfası</a>
+
                 <div class="blog">
                     <div class="blog-img text-center">
                         <img class="img-fluid rounded" src="{{post.postImage}}" alt="">
                     </div>
                     <div class="blog-content">
                         <ul class="blog-meta">
-                            <li><i class="fas fa-user"></i>Burak Güney</li>
+                            <li><i class="fas fa-user"></i>{{post.author.username}}</li>
                             <li><i class="fas fa-clock"></i>{{generateDate post.date "LLL"}}</li>
                             <li><i class="fas fa-comments"></i>0</li>
                         </ul>
@@ -27,12 +39,8 @@
                         <p>{{{post.content}}}</p>
                     </div>
 
-
-                    <!-- blog comments -->
                     <div class="blog-comments">
                         <h3>(1) Comments</h3>
-
-                        <!-- comment -->
                         <div class="media">
                             <div class="media-body">
                                 <h4 class="media-heading">Joe Doe<span class="time">2 min ago</span></h4>
@@ -41,12 +49,8 @@
                                     nunc sed. Nunc non blandit massa enim nec.</p>
                             </div>
                         </div>
-                        <!-- /comment -->
-
                     </div>
-                    <!-- /blog comments -->
 
-                    <!-- reply form -->
                     <div class="reply-form">
                         <h3>Leave A Comment</h3>
                         <form>
@@ -57,59 +61,13 @@
                             <button type="submit" class="btn btn-success mt-3 float-right">Yorum Ekle</button>
                         </form>
                     </div>
-                    <!-- /reply form -->
                 </div>
             </main>
-            <!-- /Main -->
-
-            <aside id="aside" class="col-md-4">
-
-                <div class="widget">
-                    <div class="widget-search">
-                        <input class="search-input form-control" type="text" placeholder="Arama">
-                        <button class="search-btn" type="button"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-                <!-- /Search -->
 
 
-                <!-- Category -->
-                <div class="widget mt-5">
-                    <h3 class="mb-3">KATEGORİLER</h3>
-                    <div class="widget-category">
-                        {{#each categories}}
-                        <a href="#"> {{categoryname}} <span>(7)</span></a>
-                        {{/each}}
-                    </div>
-                </div>
-                <!-- /Category -->
-
-                <!-- Posts sidebar -->
-                <div class="widget mt-5">
-                    <h3 class="mb-3">SON 3 İÇERİK</h3>
-
-                    {{#each post3}}
-                    <!-- single post -->
-                    <div class="widget-post">
-                        <a href="/blog/{{_id}}">
-                            <img style="height: 75px; object-fit: cover;" class=" img-fluid" src="{{postImage}}"
-                                alt="">{{title}}
-                        </a>
-                        <ul class="blog-meta">
-                            <li>{{generateDate date "LLL"}}</li>
-                        </ul>
-                    </div>
-                    <!-- /single post -->
-                    {{/each}}
-
-                </div>
-                <!-- /Posts sidebar -->
-
-            </aside>
-
+            {{> blog-sidebar}}
 
 
         </div>
-
     </div>
 </section>

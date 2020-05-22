@@ -1,20 +1,25 @@
-/* const express = require('express');
+const express = require('express');
 const router = express.Router();
-const Category = require("../../models/Category")
+const Category = require("../../models/Category");
+
+
 
 router.get('/editcategory', (req, res) => {
 
-    if (req.session.userId) {
+    if (req.session.isAdmin !== 1) {
+        res.redirect("/")
+
+    } else {
         Category.find({}).then((category) => {
             res.render("admin/editcategory", {
-                category: category.reverse()
+                category: category.reverse(),
+                title: "Admin Kategoriler"
             })
         })
-    } else {
-        res.redirect("/users/login")
     }
 
 })
+
 
 router.post('/editcategory', (req, res) => {
 
@@ -27,6 +32,22 @@ router.post('/editcategory', (req, res) => {
             res.redirect("/admin/editcategory")
         }
     })
+
 })
 
-module.exports = router */
+
+router.delete('/editcategory/:id', (req, res) => {
+
+    Category.deleteOne({ _id: req.params.id }).then(() => {
+        req.session.sessionMessage = {
+            type: "alert alert-warning text-center",
+            message: "Kategori silindi!"
+        }
+        res.redirect("/admin/editcategory")
+    })
+
+})
+
+
+
+module.exports = router

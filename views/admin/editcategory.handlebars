@@ -14,20 +14,25 @@
     {{> admin-nav}}
 
     <div id="page-content-wrapper">
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <button class="btn btn-secondary" id="menu-toggle">Admin Menü</button>
         </nav>
 
-        <div class="container-fluid">
-            <div class="row text-center mt-5">
-                <div class="col-md-4 offset-md-4">
-                    <div class="section-header">
-                        <h2 class="title">KATEGORİ</h2>
-                    </div>
-                </div>
-            </div>
+        <div class="container">
+
             <div class="row">
-                <div class="col-md-3">
+
+                <div class="col-md-4">
+
+                    <div class="row text-center mt-5">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="section-header">
+                                <h2 class="title">Kategori Ekle</h2>
+                            </div>
+                        </div>
+                    </div>
+
                     <form action="/admin/editcategory" method="POST">
                         <div class="row">
                             <div class="col-md-12">
@@ -45,27 +50,51 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-9">
+
+                <div class="col-md-8">
+
+                    <div class="row text-center mt-5">
+                        <div class="col-md-4 offset-md-4">
+                            <div class="section-header">
+                                <h2 class="title">Kategori Listesi</h2>
+                            </div>
+                        </div>
+                    </div>
+
+
                     {{#if sessionMessage.message}}
                     <div class="{{sessionMessage.type}}" id="sessionMessage">
                         {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
                                 class="fa fa-times"></i></a>
                     </div>
                     {{/if}}
+
+
                     <table class="table">
+
                         <thead>
                             <tr>
-                                <th>KATEGORİ</th>
+                                <th>Kategori</th>
                                 <th>Düzenle</th>
                             </tr>
                         </thead>
+
                         <tbody>
+
+
                             {{#each category}}
                             <tr>
                                 <td>{{categoryname}}</td>
-                                <td>sil</td>
+                                <td>
+                                    <form action="/admin/editcategory/{{id}}?_method=DELETE" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger btn">Sil</button>
+                                    </form>
+                                </td>
                             </tr>
                             {{/each}}
+
+
                         </tbody>
                     </table>
                 </div>

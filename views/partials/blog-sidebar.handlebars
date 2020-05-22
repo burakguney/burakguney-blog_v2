@@ -1,0 +1,43 @@
+<aside id="aside" class="col-md-4">
+
+    <div class="widget">
+        <div class="widget-search">
+            <form action="/search" method="GET">
+                <input class="search-input form-control" type="text" name="search" placeholder="Arama">
+                <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="widget mt-5">
+        <h3 class="mb-3">KATEGORİLER</h3>
+        <div class="widget-category">
+
+
+            {{#each categories}}
+            <a href="/blog/category/{{_id}}"> {{categoryname}} <span
+                    class="badge admin-color text-light badge-pill">{{num_of_posts}}</span></a>
+            {{/each}}
+
+
+        </div>
+    </div>
+
+    <div class="widget mt-5">
+        <h3 class="mb-3">SON 3 İÇERİK</h3>
+
+
+        {{#each post3}}
+        <div class="widget-post">
+            <a href="/blog/{{_id}}">
+                <img style="height: 75px; object-fit: cover;" class=" img-fluid" src="{{postImage}}" alt="">{{title}}
+            </a>
+            <ul class="blog-meta">
+                <li>{{generateDate date "LLL"}}</li>
+            </ul>
+        </div>
+        {{/each}}
+
+
+    </div>
+</aside>

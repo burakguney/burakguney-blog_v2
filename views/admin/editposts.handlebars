@@ -1,0 +1,105 @@
+<!--==========================
+    Header Section
+============================-->
+<section class="admin-color md-padding">
+</section>
+
+<!--==========================
+    Admin Editpost Section
+============================-->
+
+<div class="d-flex admin-padding" id="wrapper">
+
+    {{!-- Admin Nav Side Bar --}}
+    {{> admin-nav}}
+
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-lightk border-bottom">
+            <button class="btn btn-secondary" id="menu-toggle">Admin Menü</button>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="row text-center mt-5">
+                        <div class="col-md-4 offset-md-4">
+                            <div class="section-header">
+                                <h2 class="title">İçerik Listesi</h2>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {{#if sessionMessage.message}}
+                    <div class="{{sessionMessage.type}}" id="sessionMessage">
+                        {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                    {{/if}}
+                    <div id="aside">
+                        <div class="widget">
+                            <div class="widget-search">
+                                <form action="/admin/search" method="GET">
+                                    <input class="search-input form-control" type="text" name="search"
+                                        placeholder="Arama">
+                                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table mt-3">
+
+                        <thead>
+                            <tr>
+                                <th>Başlık</th>
+                                <th>Yazar</th>
+                                <th>Tarih</th>
+                                <th>Görsel</th>
+                                <th>Kategori</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+
+                            {{#each posts}}
+                            <tr>
+                                <td>{{title}}</td>
+                                <td>{{author.username}}</td>
+                                <td>{{generateDate date "LLL"}}</td>
+                                <td>
+                                    <div class="blog-img">
+                                        <img style="height: 100px;" class="img-fluid rounded" src="{{postImage}}">
+                                    </div>
+                                </td>
+                                <td>{{category.categoryname}}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-block" href="/admin/editposts/edit/{{id}}">Düzenle</a>
+                                </td>
+                                <td>
+                                    <form action="/admin/editposts/{{id}}?_method=DELETE" method="POST">
+                                        <input type="hidden" name="_method" value="SİL">
+                                        <button type="submit" class="btn btn-danger btn-block">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    CKEDITOR.replace('content');
+</script>

@@ -7,7 +7,6 @@ if (sessionMessage === null) {
         if (e.target.className === "fa fa-times") {
             e.target.parentElement.parentElement.remove();
         }
-        e.preventDefault();
     })
 }
 

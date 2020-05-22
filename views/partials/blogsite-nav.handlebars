@@ -2,63 +2,70 @@
 
 
 <nav class="navbar navbar-container navbar-expand-lg admin-color fixed-top" id="mainNav">
+
     <div class="container">
+
         <a class="navbar-brand js-scroll-trigger ml-2" href="/"> <i class="fas fa-jedi"></i> Burak Güney</a>
+
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation" id="navbutton">
             Menü
             <i class="fas fa-bars"></i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
+
             <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/"><i class="fas fa-home"></i>ANASAYFA</a>
+                    <a class="nav-link" id="homepage" href="/"><i class="fas fa-home"></i>ANASAYFA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about"><i class="fas fa-portrait"></i>HAKKIMDA</a>
+                    <a class="nav-link" id="aboutpage" href="/about"><i class="fas fa-portrait"></i>HAKKIMDA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link alertbox" id="blog" href="/blog"><i class="fas fa-blog"></i>BLOG</a>
+                    <a class="nav-link alertbox" id="blogpage" href="/blog"><i class="fas fa-blog"></i>BLOG</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="blogcontact" href="/contact"><i class="fas fa-envelope"></i>İLETİŞİM</a>
+                    <a class="nav-link" id="contactpage" href="/contact"><i class="fas fa-envelope"></i>İLETİŞİM</a>
                 </li>
-                {{!-- {{#unless displayLink}}
+
+
+                {{#unless displayLink}}
                 <li class="nav-item">
-                    <a class="nav-link" id="bloglogin" href="/users/login"><i class="fas fa-sign-in-alt"></i>GİRİŞ
-                        YAP</a>
+                    <a class="nav-link" id="loginpage" href="/users/login"><i class="fas fa-sign-in-alt"></i>GİRİŞ
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="blogregister" href="/users/register"><i class="fas fa-save"></i>HESAP
+
+                {{!-- <li class="nav-item">
+                    <a class="nav-link" id="registerpage" href="/users/register"><i class="fas fa-save"></i>HESAP
                         OLUŞTUR</a>
-                </li>
+                </li> --}}
                 {{/unless}}
+
 
                 {{#if displayLink}}
                 <li class="nav-item">
                     <a class="nav-link" id="bloglogin" href="/users/logout"><i class="fas fa-sign-out-alt"></i>Çıkış</a>
                 </li>
 
+                {{/if}}
+
+                {{#if displayAdmin}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin">ADMIN</a>
+                    <a class="nav-link" href="/admin">{{userTitle}}</a>
                 </li>
-                {{/if}} --}}
+                {{/if}}
+
+                {{!-- {{#unless displayAdmin}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/edit/{{userId}}">{{userTitle}}</a>
+                </li>
+                {{/unless}} --}}
+
+
 
             </ul>
         </div>
     </div>
 </nav>
-
-<script>
-    let navbutton = document.getElementById("navbutton");
-    let nav = document.getElementById("mainNav");
-    let blog = document.getElementById("blog");
-    navbutton.addEventListener("click", () => {
-        nav.classList.add("shrink");
-    })
-    blog.addEventListener("click", () => {
-        setTimeout(function () { location.replace("https://burakguney.herokuapp.com"); }, 1000);
-        alert("Burası şuanlık kullanım dışı üzgünüm.")
-    })
-</script>

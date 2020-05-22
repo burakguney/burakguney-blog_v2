@@ -8,6 +8,7 @@
     Login Section
 ============================-->
 <section id="contact" class="md-padding">
+
     <div class="container">
 
         <div class="row text-center">
@@ -19,16 +20,21 @@
         </div>
 
         <div class="row">
+
             <div class="col-lg-12">
+
+
                 {{#if sessionMessage.message}}
                 <div class="{{sessionMessage.type}}" id="sessionMessage">
                     {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
                             class="fa fa-times"></i></a>
                 </div>
                 {{/if}}
+
+                
                 <form action="/users/login" method="POST">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6 offset-md-3">
                             <div class="form-group">
                                 <input class="form-control" name="email" type="email" placeholder="E-Posta *"
                                     required="required"
@@ -41,7 +47,7 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <div class="col-md-12 clearfix">
+                        <div class="col-md-6 offset-md-3 clearfix">
                             * Zorunlu alanları belirtir.
                         </div>
                         <div class="col-md-4 offset-md-4 text-center mt-3">
@@ -60,6 +66,5 @@
                 </form>
             </div>
         </div>
-
     </div>
 </section>

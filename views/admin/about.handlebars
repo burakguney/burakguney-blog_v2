@@ -1,0 +1,84 @@
+<!--==========================
+    Header Section
+============================-->
+<section class="admin-color md-padding">
+</section>
+
+<!--==========================
+    Admin Editpost Section
+============================-->
+
+<div class="d-flex admin-padding" id="wrapper">
+
+    {{!-- Admin Nav Side Bar --}}
+    {{> admin-nav}}
+
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-lightk border-bottom">
+            <button class="btn btn-secondary" id="menu-toggle">Admin Menü</button>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="row text-center mt-5">
+                        <div class="col-md-4 offset-md-4">
+                            <div class="section-header">
+                                <h2 class="title">Hakkımda</h2>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {{#if sessionMessage.message}}
+                    <div class="{{sessionMessage.type}}" id="sessionMessage">
+                        {{sessionMessage.message}} <a href="" class="delete-item float-right"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                    {{/if}}
+
+
+
+                    <div class="row justify-content-center mb-5 mb-lg-0">
+
+
+                        {{#each about}}
+                        <div class="col-md-6">
+                            <img class="img-fluid rounded" src="{{aboutImage}}" alt="">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <div class="text-center h-100 project">
+                                <div class="d-flex h-100">
+                                    <div class="project-text w-100 my-auto text-left">
+                                        {{{about}}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mt-3">
+                            <a class="btn btn-primary btn-block" href="/admin/about/edit/{{id}}">Düzenle</a>
+                        </div>
+                        <div class="col-md-3 mt-3">
+                            <form action="/admin/editabout/{{id}}?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="SİL">
+                                <button type="submit" class="btn btn-danger btn-block">Sil</button>
+                            </form>
+                        </div>
+                        {{/each}}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    CKEDITOR.replace('about');
+</script>

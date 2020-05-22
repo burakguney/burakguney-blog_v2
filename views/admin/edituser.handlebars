@@ -1,0 +1,82 @@
+<!--==========================
+    Header Section
+============================-->
+<section class="admin-color md-padding">
+</section>
+
+<!--==========================
+    Admin Editpost Section
+============================-->
+
+<div class="d-flex admin-padding" id="wrapper">
+
+    {{!-- Admin Nav Side Bar --}}
+    {{> admin-nav}}
+
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-lightk border-bottom">
+            <button class="btn btn-secondary" id="menu-toggle">Admin Menü</button>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="row text-center mt-5">
+                        <div class="col-md-4 offset-md-4">
+                            <div class="section-header">
+                                <h2 class="title">İçerik Düzenle</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="/admin/users/{{user.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_method" value="PUT">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="username" type="text"
+                                        value="{{user.username}}" required="required"
+                                        data-validation-required-message="Please enter a title.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="email" type="email" value="{{user.email}}"
+                                        required="required" data-validation-required-message="Please enter a title.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="password" type="password"
+                                        value="{{user.password}}" required="required"
+                                        data-validation-required-message="Please enter a title.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+
+                                    <select class="form-control" name="isAdmin" id="" required="required">
+                                        <option value="">* Admin Yetkisi</option>
+                                        <option value="0">Hayır</option>
+                                        <option value="1">Evet</option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 clearfix">* Zorunlu alanları belirtir.</div>
+                            <div class="col-md-4 offset-md-4 text-center mt-3">
+                                <button type="submit" class="btn btn-success btn-block">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    CKEDITOR.replace('content');
+</script>
