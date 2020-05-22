@@ -37,7 +37,7 @@
                 <div class="row">
 
 
-                    {{#each postsall}}
+                    {{#each posts}}
                     <div class="col-md-6 mb-3">
                         <div class="blog">
                             <div class="blog-img text-center">
@@ -48,7 +48,6 @@
                                     <li><i class="fas fa-users"></i><span class="writer">{{author.username}}</span></li>
                                     <li><i class="fas fa-clock"></i><span
                                             class="writer">{{generateDate date "LLL"}}</span></li>
-                                    <li><i class="fas fa-comments"></i><span class="writer">0</span></li>
                                 </ul>
                                 <h3 class="text-center">{{title}}</h3>
                                 <p>{{{truncate content 200}}}</p>

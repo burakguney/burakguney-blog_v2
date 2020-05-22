@@ -28,7 +28,7 @@ router.get('/blog', (req, res) => {
     const postPerPage = 4
     const page = req.query.page || 1
 
-    Post.find({}).populate({ path: "author", model: User })
+    Post.find({}).populate({ path: "author", model: User }).sort({ $natural: -1 })
         .skip((postPerPage * page) - postPerPage)
         .limit(postPerPage)
         .then((posts) => {
@@ -51,9 +51,9 @@ router.get('/blog', (req, res) => {
                     }
                 ]).then((categories) => {
                     res.render("blogsite/blog", {
-                        postsall: posts.reverse(),
+                        posts: posts,
                         post3: posts.slice(0, 3),
-                        categories: categories.reverse(),
+                        categories: categories,
                         title: 'Blog',
                         current: parseInt(page),
                         pages: Math.ceil(postCount / postPerPage)
@@ -67,7 +67,7 @@ router.get('/blog', (req, res) => {
 
 router.get('/blog/:id', (req, res) => {
 
-    Post.findById(req.params.id).populate({ path: "author", model: User }).then((post) => {
+    Post.findById(req.params.id).populate({ path: "author", model: User }).sort({ $natural: -1 }).then((post) => {
         Post.find({}).then((posts) => {
             Category.aggregate([
                 {
@@ -88,8 +88,8 @@ router.get('/blog/:id', (req, res) => {
             ]).then((categories) => {
                 res.render("blogsite/post", {
                     post: post,
-                    post3: posts.reverse().slice(0, 3),
-                    categories: categories.reverse(),
+                    post3: posts.slice(0, 3),
+                    categories: categories,
                     title: 'Blog'
                 })
             })
@@ -100,7 +100,7 @@ router.get('/blog/:id', (req, res) => {
 
 router.get("/blog/category/:categoryId", (req, res) => {
 
-    Post.find({ category: req.params.categoryId }).populate({ path: "category", model: Category }).populate({ path: "author", model: User }).then((posts) => {
+    Post.find({ category: req.params.categoryId }).populate({ path: "category", model: Category }).sort({ $natural: -1 }).populate({ path: "author", model: User }).then((posts) => {
         Category.aggregate([
             {
                 $lookup: {
@@ -120,8 +120,8 @@ router.get("/blog/category/:categoryId", (req, res) => {
         ]).then((categories) => {
             res.render("blogsite/blog", {
                 posts: posts,
-                post3: posts.reverse().slice(0, 3),
-                categories: categories.reverse(),
+                post3: posts.slice(0, 3),
+                categories: categories,
                 title: 'Blog'
             })
         })
@@ -136,7 +136,7 @@ function escapeRegex(text) {
 router.get("/search", (req, res) => {
     if (req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-        Post.find({ "title": regex }).then((posts) => {
+        Post.find({ "title": regex }).sort({ $natural: -1 }).then((posts) => {
             Category.aggregate([
                 {
                     $lookup: {
@@ -156,8 +156,8 @@ router.get("/search", (req, res) => {
             ]).then((categories) => {
                 res.render("blogsite/blog", {
                     posts: posts,
-                    post3: posts.reverse().slice(0, 3),
-                    categories: categories.reverse(),
+                    post3: posts.slice(0, 3),
+                    categories: categories,
                     title: 'Blog'
                 })
             })
