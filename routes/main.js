@@ -6,7 +6,6 @@ const About = require('../models/About');
 const User = require('../models/User');
 
 router.get('/', (req, res) => {
-    console.log(req.session);
     res.render("blogsite/home", { title: 'Anasayfa' })
 
 })

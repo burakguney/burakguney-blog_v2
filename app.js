@@ -45,7 +45,7 @@ app.use(expressSession({
 
 
 app.use((req, res, next) => {
-    const { userId, isAdmin, username, email } = req.session
+    const { userId, isAdmin, username } = req.session
     if (userId) {
         res.locals = {
             displayLink: true

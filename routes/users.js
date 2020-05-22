@@ -4,7 +4,7 @@ const User = require('../models/User');
 
 
 
-/* router.get('/register', (req, res) => {
+router.get('/register', (req, res) => {
 
     res.render("blogsite/register", { title: 'Hesap Oluştur' })
 
@@ -50,7 +50,7 @@ router.post('/register', (req, res) => {
                 })
             }
         })
-}) */
+})
 
 
 router.get('/login', (req, res) => {
