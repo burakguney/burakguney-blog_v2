@@ -51,7 +51,7 @@ router.get('/blog', (req, res) => {
                     }
                 ]).then((categories) => {
                     res.render("blogsite/blog", {
-                        posts: posts,
+                        postsall: posts.reverse(),
                         post3: posts.reverse().slice(0, 3),
                         categories: categories.reverse(),
                         title: 'Blog',
