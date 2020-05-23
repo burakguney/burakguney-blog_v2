@@ -82,7 +82,7 @@ router.get('/editposts/edit/:id', (req, res) => {
     if (req.session.isAdmin !== 1) {
         res.redirect("/")
     } else {
-        Post.findOne({ _id: req.params.id }).sort({ $natural: -1 }).then((post) => {
+        Post.findOne({ _id: req.params.id }).then((post) => {
             Category.find({}).then((categories) => {
                 res.render("admin/editpost", {
                     post: post,
