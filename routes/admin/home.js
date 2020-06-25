@@ -113,13 +113,39 @@ router.put('/users/:id', (req, res) => {
 
     User.findOne({ _id: req.params.id }).then((user) => {
 
-        user.email = req.body.email
-        user.isAdmin = req.body.isAdmin
-        user.password = req.body.password
+        if (user.email != req.body.email) {
+            User.findOne({ email: req.body.email }).then((users) => {
+                if (users) {
+                    req.session.sessionMessage = {
+                        type: "alert alert-danger text-center",
+                        message: "Bu e-posta kullanılıyor!"
+                    }
+                    res.redirect("/admin/users")
+                } else {
+                    user.email = req.body.email
+                    user.isAdmin = req.body.isAdmin
+                    user.password = req.body.password
 
-        user.save().then((user) => {
-            res.redirect("/admin/users")
-        })
+                    user.save().then((user) => {
+                        req.session.sessionMessage = {
+                            type: "alert alert-success text-center",
+                            message: "Değişiklikler Kaydedildi!"
+                        }
+                        res.redirect("/admin/users")
+                    })
+                }
+            })
+        }
+        else {
+            user.email = req.body.email
+            user.isAdmin = req.body.isAdmin
+            user.password = req.body.password
+
+            user.save().then((user) => {
+                res.redirect("/admin/users")
+            })
+        }
+
     })
 })
 
