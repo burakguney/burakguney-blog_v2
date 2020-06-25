@@ -45,7 +45,7 @@ app.use(expressSession({
 
 
 app.use((req, res, next) => {
-    const { userId, isAdmin, username } = req.session
+    const { userId, isAdmin, username, email, isSuperAdmin } = req.session
     if (userId) {
         res.locals = {
             displayLink: true
@@ -55,6 +55,14 @@ app.use((req, res, next) => {
                 displayLink: true,
                 displayAdmin: true,
                 userTitle: username
+            }
+            if (isSuperAdmin == 1) {
+                res.locals = {
+                    displayAbout: true,
+                    displayLink: true,
+                    displayAdmin: true,
+                    userTitle: username
+                }
             }
         } else {
             res.locals = {
@@ -110,6 +118,9 @@ app.use("/", main)
 
 const users = require('./routes/users');
 app.use("/users", users)
+
+const contact = require('./routes/contact')
+app.use("/contact", contact)
 
 
 const admin = require('./routes/admin/home');

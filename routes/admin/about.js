@@ -7,7 +7,7 @@ const path = require("path");
 
 router.get('/addabout', (req, res) => {
 
-    if (req.session.isAdmin !== 1) {
+    if (req.session.isSuperAdmin !== 1) {
 
         res.redirect("/")
 
@@ -44,14 +44,14 @@ router.post('/addabout', (req, res) => {
 
 router.get('/about', (req, res) => {
 
-    if (req.session.isAdmin !== 1) {
+    if (req.session.isSuperAdmin !== 1) {
         res.redirect("/")
 
     } else {
         About.find({}).then((about) => {
             res.render("admin/about", {
                 about: about,
-                title : "Admin Hakkımda"
+                title: "Admin Hakkımda"
             })
         })
     }

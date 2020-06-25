@@ -35,24 +35,33 @@ router.get('/users', (req, res) => {
 
 router.delete('/users/:id', (req, res) => {
 
-    if (req.params.id == "5ec7e94f22b9e60004525597") {
+    User.findOne({ _id: req.params.id }).then((user) => {
 
-        req.session.sessionMessage = {
-            type: "alert alert-danger text-center",
-            message: "Bu kullanıcı silinemez!"
-        }
-        res.redirect("/admin/users")
+        if (user.isSuperAdmin) {
 
-    } else if (req.session.userId == "5ec7e94f22b9e60004525597" || req.session.userId == req.params.id) {
-
-        User.deleteOne({ _id: req.params.id }).then(() => {
             req.session.sessionMessage = {
-                type: "alert alert-warning text-center",
-                message: "Kullanıcı silindi!"
+                type: "alert alert-danger text-center",
+                message: "Bu kullanıcı silinemez!"
             }
             res.redirect("/admin/users")
-        })
-    }
+
+        } else if (req.session.isSuperAdmin || req.session.userId == req.params.id) {
+
+            User.deleteOne({ _id: req.params.id }).then(() => {
+                req.session.sessionMessage = {
+                    type: "alert alert-warning text-center",
+                    message: "Kullanıcı silindi!"
+                }
+                res.redirect("/admin/users")
+            })
+        } else {
+            req.session.sessionMessage = {
+                type: "alert alert-danger text-center",
+                message: "Bunu yapmaya yetkiniz yok!"
+            }
+            res.redirect("/admin/users")
+        }
+    })
 })
 
 router.get('/users/edit/:id', (req, res) => {
@@ -67,13 +76,13 @@ router.get('/users/edit/:id', (req, res) => {
 
             if (req.session.isAdmin) {
 
-                if (req.params.id == "5ec7e94f22b9e60004525597" && req.session.userId != "5ec7e94f22b9e60004525597") {
+                if (user.isSuperAdmin && !req.session.isSuperAdmin) {
                     req.session.sessionMessage = {
                         type: "alert alert-danger text-center",
                         message: "Bunu yapmaya yetkiniz yok!"
                     }
                     res.redirect("/admin/users")
-                } else if (req.session.userId == "5ec7e94f22b9e60004525597" || req.session.userId == req.params.id) {
+                } else if (req.session.isSuperAdmin || req.session.userId == req.params.id) {
                     res.render("admin/edituser", {
                         user: user,
                         title: 'Admin Kullanıcı Düzenle'
@@ -104,7 +113,6 @@ router.put('/users/:id', (req, res) => {
 
     User.findOne({ _id: req.params.id }).then((user) => {
 
-        user.username = req.body.username
         user.email = req.body.email
         user.isAdmin = req.body.isAdmin
         user.password = req.body.password

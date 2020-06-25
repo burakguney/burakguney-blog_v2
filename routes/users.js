@@ -4,7 +4,7 @@ const User = require('../models/User');
 
 
 
-/* router.get('/register', (req, res) => {
+router.get('/register', (req, res) => {
 
     res.render("blogsite/register", { title: 'Hesap Oluştur' })
 
@@ -50,7 +50,7 @@ router.post('/register', (req, res) => {
                 })
             }
         })
-}) */
+})
 
 
 router.get('/login', (req, res) => {
@@ -75,6 +75,9 @@ router.post('/login', (req, res) => {
                     req.session.username = user.username
                     req.session.email = user.email
                     req.session.isAdmin = 1
+                    if (user.isSuperAdmin) {
+                        req.session.isSuperAdmin = 1
+                    }
                     res.redirect("/admin")
                 }
                 else {
@@ -115,7 +118,7 @@ router.get('/logout', (req, res) => {
 })
 
 
-/* router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', (req, res) => {
 
     if (req.session.userId != req.params.id) {
 
@@ -137,88 +140,43 @@ router.get('/logout', (req, res) => {
 
 router.put('/edit/:id', (req, res) => {
 
-    const username = req.body.username;
-    const email = req.body.email;
-    const password = req.body.password;
 
-    User.findOne({ username: username })
-        .then(user => {
+    User.findOne({ email: req.body.email }).then((user) => {
+        if (user) {
 
-            if (user) {
+            if (user.email == req.session.email) {
 
-                if (user.username != req.session.username) {
-                    res.render("blogsite/edituser", { title: "Kullanıcı Düzenle", type: "alert alert-danger text-center", message: "Böyle bir kullanıcı adı var.", type2: "fa fa-times" })
-
-                }
-                else if (user.email != email) {
-
-                    if (req.session.email != email) {
-                        res.render("blogsite/edituser", { title: "Kullanıcı Düzenle", type: "alert alert-danger text-center", message: "Böyle bir e-posta var.", type2: "fa fa-times" })
-
-                    } else {
-
-                        User.findOne({ _id: req.params.id }).then((user) => {
-                            user.username = req.body.username //bora1
-                            user.email = req.body.email //bora2
-                            user.password = req.body.password //123
-
-                            user.save().then((user) => {
-                                res.render("blogsite/edituser", { user: user, title: "Kullanıcı Düzenle", type: "alert alert-success text-center", message: "E-posta değiştirildi.", type2: "fa fa-times" })
-                            })
-                        })
-
-                    }
-                } else if (user.password != password) {
-
-                    User.findOne({ _id: req.params.id }).then((user) => {
-
-                        user.username = req.body.username //bora1
-                        user.email = req.body.email //bora2
-                        user.password = req.body.password //123
-
-                        user.save().then((user) => {
-                            res.render("blogsite/edituser", { user: user, title: "Kullanıcı Düzenle", type: "alert alert-success text-center", message: "Parola değiştirildi.", type2: "fa fa-times" })
-                        })
+                User.findOne({ _id: req.params.id }).then((user) => {
+                    user.email = req.body.email
+                    user.password = req.body.password
+                    req.session.email = req.body.email
+                    user.save().then((user) => {
+                        res.render("blogsite/edituser", { user: user, title: "Kullanıcı Düzenle", type: "alert alert-success text-center", message: "Değişiklik Kaydedildi.", type2: "fa fa-times" })
                     })
-
-                }
-            } else {
-
-                User.findOne({ email: email }).then(user => {
-
-                    if (user) {
-
-                        if (user.email == email && user.password == password) {
-
-                            User.findOne({ _id: req.params.id }).then((user) => {
-                                user.username = req.body.username //bora1
-                                user.email = req.body.email //bora@email.com
-                                user.password = req.body.password //123
-
-                                user.save().then((user) => {
-                                    res.render("blogsite/edituser", { user: user, title: "Kullanıcı Düzenle", type: "alert alert-success text-center", message: "Kullanıcı adı değiştirildi.", type2: "fa fa-times" })
-                                })
-                            })
-
-                        }
-                    } else {
-
-                        User.findOne({ _id: req.params.id }).then((user) => {
-
-                            user.username = req.body.username
-                            user.email = req.body.email
-                            user.password = req.body.password
-
-                            user.save().then((user) => {
-                                res.render("blogsite/edituser", { user: user, title: "Kullanıcı Düzenle", type: "alert alert-success text-center", message: "Değişiklikler kaydedildi.", type2: "fa fa-times" })
-                            })
-                        })
-
-                    }
                 })
+
             }
-        })
-}) */
+            else {
+                req.session.sessionMessage = {
+                    type: "alert alert-warning text-center",
+                    message: "Böyle bir e-posta var"
+                }
+
+            }
+        }
+        else {
+            User.findOne({ _id: req.params.id }).then((user) => {
+                user.email = req.body.email
+                user.password = req.body.password
+                req.session.email = req.body.email
+                user.save().then((user) => {
+                    res.render("blogsite/edituser", { user: user, title: "Kullanıcı Düzenle", type: "alert alert-success text-center", message: "E-posta değiştirildi.", type2: "fa fa-times" })
+                })
+            })
+        }
+    })
+
+})
 
 
 
